@@ -2,7 +2,7 @@
  * ベースPATH
  * @type {string}
  */
-export const BASE_PATH = "/react-output-router-ts-v2";
+export const BASE_PATH = "/react-output-hook-form-zod";
 
 /**
  * リンク先一覧

@@ -1,15 +1,15 @@
-# react-output-router-ts-v2
+# react-output-hook-form-zod
 
 React アウトプットサンプル
 
-TypeScript を使用
+TypeScript, react-hook-form, zod を使用
 
 react-router を用いて SPA 構成にしたアプリケーション
 
 状態管理は context api を使用
 
 url はこちら
-https://yukionishi1129.github.io/react-output-router-ts-v2
+https://yukionishi1129.github.io/react-output-hook-form-zod
 
 ## 目次
 

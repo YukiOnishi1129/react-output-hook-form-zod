@@ -1,5 +1,5 @@
 {
-  "name": "react-output-router-ts-v2",
+  "name": "react-output-hook-form-zod",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,9 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.5"
+    "react-hook-form": "^7.54.2",
+    "react-router": "^7.1.5",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
