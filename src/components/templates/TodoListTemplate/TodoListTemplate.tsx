@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InputFormSection } from "../../molecules";
 import { BaseLayout, TodoList } from "../../organisms";
-import { InputForm } from "../../atoms";
 import { useTodoContext } from "../../../hooks/useTodoContext";
 import styles from "./style.module.css";
 
@@ -42,7 +42,7 @@ export const TodoListTemplate = () => {
           <Controller
             name="keyword"
             render={({ field }) => (
-              <InputForm placeholder={"Search Keyword"} {...field} />
+              <InputFormSection placeholder={"Search Keyword"} {...field} />
             )}
             control={control}
           />
