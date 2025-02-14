@@ -12,7 +12,7 @@ export const useTodo = () => {
    * Todo新規登録処理
    */
   const addTodo = useCallback(
-    (title: string, content: string) => {
+    (title: string, content?: string) => {
       const nextUniqueId = uniqueId + 1;
       const newTodo = [
         ...originTodoList,
