@@ -7,7 +7,7 @@ import { InputForm } from "../../atoms";
 import { useTodoContext } from "../../../hooks/useTodoContext";
 import styles from "./style.module.css";
 
-const searchSchema = z.object({
+const schema = z.object({
   keyword: z.string(),
 });
 
@@ -16,7 +16,7 @@ export const TodoListTemplate = () => {
   const { originTodoList, deleteTodo } = useTodoContext();
 
   const { control, watch } = useForm({
-    resolver: zodResolver(searchSchema),
+    resolver: zodResolver(schema),
     defaultValues: { keyword: "" },
   });
   const searchKeyword = watch("keyword");
