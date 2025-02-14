@@ -2,7 +2,8 @@ import { Controller } from "react-hook-form";
 
 import { useTodoContext } from "../../../hooks/useTodoContext";
 import { BaseLayout } from "../../organisms";
-import { CommonButton, InputForm, TextArea } from "../../atoms";
+import { InputFormSection } from "../../molecules";
+import { CommonButton, TextArea } from "../../atoms";
 import { useTodoCreateTemplate } from "./useTodoCreateTemplate";
 import styles from "./style.module.css";
 
@@ -19,13 +20,14 @@ export const TodoCreateTemplate = () => {
           <Controller
             name="title"
             render={({ field }) => (
-              <InputForm placeholder={"Title"} {...field} />
+              <InputFormSection
+                placeholder={"Title"}
+                errorMessage={errors.title?.message}
+                {...field}
+              />
             )}
             control={control}
           />
-          {errors.title && (
-            <span style={{ color: "red" }}>{errors.title?.message}</span>
-          )}
         </div>
         <div className={styles.area}>
           <Controller
