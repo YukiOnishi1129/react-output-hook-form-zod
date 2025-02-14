@@ -25,7 +25,7 @@ export const useTodoEditTemplate = ({
    * Todo更新処理
    */
   const handleUpdateTodo = useCallback(
-    ({ title, content }: { title: string; content: string }) => {
+    ({ title, content = "" }: { title: string; content?: string }) => {
       if (!todo) return;
       updateTodo(todo.id, title, content);
       navigate(NAVIGATION_PATH.TOP);
