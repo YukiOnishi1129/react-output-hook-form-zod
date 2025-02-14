@@ -5,7 +5,7 @@ import { useTodo } from "../hooks/useTodo";
 type TodoContextType = {
   originTodoList: Array<TodoType>;
   addTodo: (title: string, content?: string) => void;
-  updateTodo: (id: number, title: string, content: string) => void;
+  updateTodo: (id: number, title: string, content?: string) => void;
   deleteTodo: (targetId: number, targetTitle: string) => void;
 };
 

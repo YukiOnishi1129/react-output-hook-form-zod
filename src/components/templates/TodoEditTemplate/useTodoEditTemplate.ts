@@ -1,11 +1,23 @@
 import { useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { NAVIGATION_PATH } from "../../../constants/navigation";
 import { TodoType } from "../../../types/Todo";
 
+const schema = z.object({
+  title: z
+    .string()
+    .min(1, "タイトルは必須です。")
+    .max(10, "10文字以内で入力してください。"),
+  content: z.string().optional(),
+});
+
 type UseTodoEditTemplateParams = {
   originTodoList: Array<TodoType>;
-  updateTodo: (id: number, title: string, content: string) => void;
+  updateTodo: (id: number, title: string, content?: string) => void;
 };
 
 export const useTodoEditTemplate = ({
@@ -21,20 +33,30 @@ export const useTodoEditTemplate = ({
     [id, originTodoList]
   );
 
-  /**
-   * Todo更新処理
-   */
-  const handleUpdateTodo = useCallback(
-    ({ title, content = "" }: { title: string; content?: string }) => {
-      if (!todo) return;
-      updateTodo(todo.id, title, content);
-      navigate(NAVIGATION_PATH.TOP);
-    },
-    [navigate, updateTodo, todo]
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: { title: todo?.title, content: todo?.content },
+  });
+
+  const handleEditSubmit = handleSubmit(
+    useCallback(
+      (values: z.infer<typeof schema>) => {
+        if (!todo) return;
+        updateTodo(todo.id, values.title, values.content);
+        navigate(NAVIGATION_PATH.TOP);
+      },
+      [updateTodo, navigate, todo]
+    )
   );
 
   return {
     todo,
-    handleUpdateTodo,
+    control,
+    errors,
+    handleEditSubmit,
   };
 };
