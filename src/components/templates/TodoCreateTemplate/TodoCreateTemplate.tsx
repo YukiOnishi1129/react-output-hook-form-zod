@@ -2,8 +2,8 @@ import { Controller } from "react-hook-form";
 
 import { useTodoContext } from "../../../hooks/useTodoContext";
 import { BaseLayout } from "../../organisms";
-import { InputFormSection } from "../../molecules";
-import { CommonButton, TextArea } from "../../atoms";
+import { InputFormSection, TextAreaSection } from "../../molecules";
+import { CommonButton } from "../../atoms";
 import { useTodoCreateTemplate } from "./useTodoCreateTemplate";
 import styles from "./style.module.css";
 
@@ -33,13 +33,14 @@ export const TodoCreateTemplate = () => {
           <Controller
             name="content"
             render={({ field }) => (
-              <TextArea placeholder={"Content"} {...field} />
+              <TextAreaSection
+                placeholder={"Content"}
+                errorMessage={errors.content?.message}
+                {...field}
+              />
             )}
             control={control}
           />
-          {errors.content && (
-            <span style={{ color: "red" }}>{errors.content?.message}</span>
-          )}
         </div>
         <div className={styles.area}>
           <CommonButton type="submit">{"Create Todo"}</CommonButton>
